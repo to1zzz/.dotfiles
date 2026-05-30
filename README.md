@@ -26,6 +26,14 @@ The core palette and philosophy were developed by [morhetz](https://github.com/m
 
 Getting my exact desktop layout is straightforward.
 
-1.  **Backup your existing configs:**
+1. **Backup your existing configs:**
     ```bash
-    mv ~/.config ~/.config.backup
+   mv ~/.config ~/.config.backup
+2. **Clone the repository:**
+    ```bash
+   git clone https://github.com/to1zzz/.dotfiles.git ~/.dotfiles
+3. **Symlink the configuration:**
+    ```bash
+   ln -sf ~/.dotfiles/.config ~/
+
+That's it! Log out and select the Niri session from your display manager to start exploring.
