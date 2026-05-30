@@ -22,6 +22,15 @@ The entire user interface is unified under the **Gruvbox** color palette. It's a
 
 The core palette and philosophy were developed by [morhetz](https://github.com/morhetz/gruvbox) and has been adapted here into a full desktop environment.
 
+## 📸 Screenshots
+
+Here's how the desktop looks in action — niri, waybar, and gruvbox harmony.
+
+<div align="center">
+  <img src="Pictures/Screenshot from 2026-05-30 15-53-48.png" alt="Desktop 1" width="45%">
+  <img src="Pictures/Screenshot from 2026-05-30 15-54-30.png" alt="Desktop 2" width="45%">
+</div>
+
 ## 🚀 Installation
 
 Getting my exact desktop layout is straightforward.
