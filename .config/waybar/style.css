@@ -1,0 +1,95 @@
+* {
+    font-family: "JetBrainsMono Nerd Font Propo", monospace;
+    font-size: 15px;         
+    font-weight: bold;
+    border: none;
+    min-height: 0;
+}
+
+window#waybar {
+    background: linear-gradient(to bottom, #2f2f2f, #2a2a2a);
+    border-bottom: none;
+    color: #ebdbb2;
+}
+
+#window {
+    background: transparent;
+    color: #ebdbb2;
+    margin: 0;
+    padding: 0 8px;
+    border-radius: 0;
+}
+
+#memory, #cpu, #custom-temperature, #custom-date, #clock, #language, #tray, #custom-power {
+    margin: 6px 2px;
+    padding: 0 11px;
+    border-radius: 6px;
+    min-height: 29px;
+}
+
+#memory {
+    background: linear-gradient(to bottom, #e0af4a, #c49632);
+    color: #282828;
+}
+
+#cpu {
+    background: linear-gradient(to bottom, #d5c4a1, #b8a785);
+    color: #282828;
+}
+
+#custom-date {
+    background: linear-gradient(to bottom, #97b87a, #7d9e62);
+    color: #282828;
+}
+
+#clock {
+    background: linear-gradient(to bottom, #d5c4a1, #b8a785);
+    color: #282828;
+}
+
+#custom-temperature {
+    background: linear-gradient(to bottom, #83a598, #6f8f8a);
+    color: #282828;
+}
+
+#custom-power {
+    background: linear-gradient(to bottom, #83a598, #6f8f8a);
+    color: #282828;
+    font-size: 19px;
+    margin-right: 4px;
+}
+
+#language {
+    background: linear-gradient(to bottom, #4f4844, #3f3835);
+    color: #ebdbb2;
+    text-shadow: none;
+    box-shadow: none;
+    font-family: "JetBrainsMono Nerd Font Propo", "Noto Color Emoji", sans-serif;
+}
+
+#tray {
+    background: linear-gradient(to bottom, #4f4844, #3f3835);
+    color: #ebdbb2;
+}
+
+#workspaces {
+    margin-left: 2px;
+}
+#workspaces button {
+    background: linear-gradient(to bottom, #4f4844, #3f3835);
+    color: #ebdbb2;
+    margin: 6px 2px;
+    padding: 0 11px;
+    border-radius: 6px;
+    min-height: 29px;
+}
+#workspaces button.active {
+    background: linear-gradient(to bottom, #83a598, #6f8f8a);
+    color: #282828;
+}
+#workspaces button:hover {
+    background: linear-gradient(to bottom, #675e57, #514a44);
+}
+
+tooltip { background: #282828; border: 1px solid #504945; }
+tooltip label { color: #ebdbb2; }

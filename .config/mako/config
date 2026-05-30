@@ -1,0 +1,20 @@
+anchor=center
+
+# Цвета (Gruvbox)
+background-color=#282828
+text-color=#F3DFB5
+border-color=#749282
+
+font=monospace bold 14
+width=250
+height=65
+border-size=3
+border-radius=0
+padding=20
+default-timeout=1600
+
+markup=1
+
+[app-name=layout]
+group-by=app-name
+text-alignment=center
