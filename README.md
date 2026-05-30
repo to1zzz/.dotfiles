@@ -1,1 +1,1 @@
-gentoo nri config
+gentoo niri config
