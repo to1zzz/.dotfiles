@@ -1,0 +1,64 @@
+# ОВЕРЛЕИ И ГЛОБАЛЬНЫЕ ПРАВИЛА
+*/*::hyproverlay
+
+
+# WAYLAND-КОМПОЗИТОРЫ И ИХ БАЗА
+gui-apps/xwayland-satellite         ~amd64
+gui-libs/scenefx                    **
+gui-wm/dwl                          ~amd64
+gui-wm/mangowc                      **
+gui-wm/niri                         ~amd64
+
+
+# WAYLAND-УТИЛИТЫ И КАСТОМИЗАЦИЯ ДЕСКТОПА
+app-misc/cliphist                   ~amd64
+app-misc/nwg-look                   ~amd64
+app-misc/yazi                       ~amd64
+gui-apps/ashell                     ~amd64
+gui-apps/fuzzel                     ~amd64
+gui-apps/hyprpicker                 ~amd64
+gui-apps/satty                      ~amd64
+gui-apps/wf-recorder                ~amd64
+gui-apps/wlr-randr                  ~amd64
+gui-apps/yambar                     ~amd64
+x11-apps/xcur2png                   ~amd64
+x11-misc/ksnip                      ~amd64
+
+
+# СИСТЕМА, ДРАЙВЕРЫ И УТИЛИТЫ
+app-benchmarks/stress-ng            ~amd64
+app-misc/pfetch                     ~amd64
+games-util/game-device-udev-rules   ~amd64
+sys-fs/jmtpfs                       ~amd64
+sys-libs/libudev-compat             ~amd64
+x11-drivers/nvidia-drivers          ~amd64
+
+
+# ИНТЕРНЕТ, МЕССЕНДЖЕРЫ И БРАУЗЕРЫ
+net-im/abaddon                      ~amd64
+net-im/legcord-bin                  ~amd64
+net-im/vesktop-bin                  ~amd64
+net-proxy/Throne                    ~amd64
+www-client/librewolf                ~amd64
+
+
+# ИГРЫ И МЕДИА
+games-util/gamemode                 ~amd64
+games-util/steam-launcher           ~amd64
+media-video/obs-studio              ~amd64
+
+
+# ШРИФТЫ
+media-fonts/jetbrains-mono-nerd     **
+media-fonts/nerdfonts               ~amd64
+
+
+# БИБЛИОТЕКИ И ЗАВИСИМОСТИ
+dev-cpp/sdbus-c++                   ~amd64
+dev-go/protobuf-go                  ~amd64
+dev-go/protoc-gen-go-grpc           ~amd64
+dev-libs/miniaudio                  ~amd64
+dev-libs/nspr                       ~amd64
+dev-libs/nss                        ~amd64
+dev-libs/qhotkey                    ~amd64
+net-libs/ixwebsocket                ~amd64
