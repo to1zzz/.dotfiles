@@ -1,0 +1,62 @@
+# СИСТЕМА
+games-util/game-device-udev-rules   -acl
+games-util/gamemode                 elogind
+sys-apps/dbus                       elogind
+sys-auth/pambase                    elogind
+sys-auth/seatd                      server builtin
+sys-boot/grub                       mount
+sys-kernel/installkernel            dracut
+sys-libs/libcap                     pam
+sys-libs/ncurses                    -minimal
+sys-libs/zlib                       minizip
+x11-base/xorg-server                xvfb -minimal
+x11-libs/libdrm                     video_cards_radeon
+
+
+# AUDIO & VIDEO
+media-libs/libvpx                   postproc
+media-libs/mesa                     proprietary-codecs
+media-sound/pulseaudio              -daemon
+media-video/ffmpeg                  vaapi amf x264 opus vpx
+media-video/obs-studio              fdk pipewire v4l wayland vaapi amf
+media-video/pipewire                sound-server gstreamer jack-client pulseaudio
+
+
+# ГРАФИЧЕСКАЯ СРЕДА
+gui-apps/waybar                     niri experimental network tray
+gui-libs/wlroots                    vulkan
+gui-wm/dwl                          savedconfig vulkan
+x11-base/xwayland                   libei
+
+
+# ТУЛКИТЫ & БИБЛИОТЕКИ
+dev-libs/boost                      nls
+dev-libs/xmlsec                     nss
+dev-qt/qt5compat                    icu
+dev-qt/qtbase                       opengl icu libproxy
+dev-qt/qtdeclarative                opengl
+dev-qt/qttools                      opengl
+llvm-core/llvm                      tools
+dev-libs/libdbusmenu                gtk3
+media-libs/freetype                 harfbuzz
+media-libs/harfbuzz                 icu
+
+
+# ТЯЖЕЛЫЙ СОФТ И ОПТИМИЗАЦИЯ
+dev-lang/python                     pgo
+sys-devel/binutils                  -pgo
+sys-devel/gcc                       pgo
+www-client/firefox                  pgo
+www-client/librewolf                hwaccel pgo
+
+
+# ИНТЕРНЕТ, МЕССЕНДЖЕРЫ И ОФИС
+app-office/libreoffice              -base
+net-im/telegram-desktop             -screencast
+net-im/vesktop-bin                  screencast
+media-libs/tg_owt                   -screencast
+
+
+# РАЗНОЕ И УТИЛИТЫ
+app-editors/neovim                  clipboard luaJIT nvimpager perl python ruby terminal
+app-text/xmlto                      text
