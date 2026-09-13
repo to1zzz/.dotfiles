@@ -5,14 +5,14 @@
 // ----------------------------------------------------------------------------
 //  1. INPUT DEVICES (Keyboard, Touchpad, Mouse)
 // ----------------------------------------------------------------------------
+
 input {
     keyboard {
         xkb {
-            // [USER] РУ/ЕН Раскладка и переключение по Alt+Shift
             layout "us,ru"
-            options "grp:alt_shift_toggle"
+            options "grp:caps_toggle"
         }
-        numlock
+        numlock true
         repeat-delay 200
         repeat-rate 50
     }
@@ -20,28 +20,25 @@ input {
     touchpad {
         tap
         natural-scroll
-        // off; dwt; dwtp; drag false; drag-lock
-        // accel-speed 0.2; accel-profile "flat"; scroll-method "two-finger"
-        // disabled-on-external-mouse
     }
 
+    // Настройки для трекбола
     mouse {
-        // off; natural-scroll; accel-speed 0.2; accel-profile "flat"; scroll-method "no-scroll"
+        accel-speed 1.0
+        accel-profile "flat"
     }
 
     trackpoint {
-        // off; natural-scroll; accel-speed 0.2; accel-profile "flat"
-        // scroll-method "on-button-down"; scroll-button 273; scroll-button-lock; middle-emulation
+        // ...
     }
 
-    // warp-mouse-to-focus
     focus-follows-mouse max-scroll-amount="0%"
 }
 
 // ----------------------------------------------------------------------------
 //  2. OUTPUTS (Monitors Setup)
 // ----------------------------------------------------------------------------
-// [USER] Конфигурация мониторов
+
 output "HDMI-A-1" {
     mode "1920x1080@74.973"
     position x=0 y=0
@@ -53,8 +50,9 @@ output "DP-1" {
 }
 
 // ----------------------------------------------------------------------------
-//  3. ENVIRONMENT & ENVIRONMENT WINDOW RULES (Layout, Style, Animations)
+//  3. ENVIRONMENT & WINDOW RULES (Layout, Style, Animations)
 // ----------------------------------------------------------------------------
+
 layout {
     gaps 15
     center-focused-column "never"
@@ -69,19 +67,18 @@ layout {
         proportion 0.5
     }
 
-      focus-ring {
+    focus-ring {
         off
     }
 
-    // Включаем полноценные рамки для всех окон
-     border {
+    // Полноценные рамки для всех окон
+    border {
         width 6
 
-        //active-color "#83a598"
         inactive-color "#504945"
         urgent-color "#3c3836"
 
-       active-gradient from="#83a598" to="#6f8f8a" angle=90
+        active-gradient from="#83a598" to="#6f8f8a" angle=180
     }
 
     shadow {
@@ -94,22 +91,14 @@ layout {
     }
 }
 
-// [USER] Скругление углов для окон
+// Скругление углов
 window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
 }
 
-animations { 
-    // off
-    // slowdown 1.5
-    // workspace-switch {
-    //    spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
-    // }
-}
-
 hotkey-overlay {
-    // skip-at-startup
+    skip-at-startup
 }
 
 // prefer-no-csd
@@ -119,28 +108,33 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // ----------------------------------------------------------------------------
 //  4. STARTUP PROCESSES (Autostart)
 // ----------------------------------------------------------------------------
-// [USER] автозапуск
+
 spawn-at-startup "waybar"
 spawn-at-startup "pipewire"
 spawn-at-startup "wireplumber"
 spawn-at-startup "pipewire-pulse"
 spawn-at-startup "sh" "-c" "dbus-update-activation-environment --all"
-spawn-at-startup "swaybg" "-i" "/home/to1z/Downloads/wall/wallpaper.png" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "/home/to1z/wallpaper.png" "-m" "fill"
+spawn-at-startup "xwayland-satellite"
+
+environment {
+    DISPLAY ":0"
+}
+
 // ----------------------------------------------------------------------------
 //  5. WINDOW RULES
 // ----------------------------------------------------------------------------
+
 // Фикс бага инициализации WezTerm
 prefer-no-csd
 
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
 }
 
-
-// Firefox Picture-in-Picture во флоатинге
+// Picture-in-Picture
 window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"librewolf$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
@@ -154,21 +148,23 @@ window-rule {
 // ----------------------------------------------------------------------------
 //  6. KEYBINDS (Горячие клавиши)
 // ----------------------------------------------------------------------------
+
 binds {
-    // --- Системные и Основные программы ---
-    Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+Shift+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    // --- Системные и основные программы ---
+    Mod+Ctrl+Slash { show-hotkey-overlay; }
+    Mod+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-    
+
     // --- Скриншоты ---
     Mod+S { screenshot; }
-    Mod+Ctrl+S { screenshot-screen; }
-    
+    Mod+Ctrl+S { screenshot-window; }
+    Print { screenshot-screen; }
+
     // --- Выход / Выключение ---
-    Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Ctrl+E { quit; }
+    Shift+Alt+Delete { quit; }
+    Mod+Ctrl+P { power-off-monitors; }
 
     // --- Мультимедиа (Звук, Плеер, Яркость) ---
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
@@ -185,11 +181,11 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
     Super+Alt+S           allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
-    // --- Управление Окнами (Фокус и Перемещение) ---
-    Mod+Shift+C repeat=false { close-window; }
-    Mod+O       repeat=false { toggle-overview; }
+    // --- Управление окнами (фокус и перемещение) ---
+    Mod+Q repeat=false { close-window; }
+    Mod+O repeat=false { toggle-overview; }
 
-    // Стрелочки & Vim-хоткеи (Фокус)
+    // Фокус: стрелки и Vim-хоткеи
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
@@ -199,7 +195,7 @@ binds {
     Mod+K     { focus-window-up; }
     Mod+L     { focus-column-right; }
 
-    // Стрелочки & Vim-хоткеи (Перемещение окон)
+    // Перемещение окон: стрелки и Vim-хоткеи
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
@@ -214,7 +210,7 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    // --- Управление Мониторами ---
+    // --- Управление мониторами ---
     Mod+Shift+Left  { focus-monitor-left; }
     Mod+Shift+Down  { focus-monitor-down; }
     Mod+Shift+Up    { focus-monitor-up; }
@@ -224,6 +220,7 @@ binds {
     Mod+Shift+K     { focus-monitor-up; }
     Mod+Shift+L     { focus-monitor-right; }
 
+    // Перемещение колонок между мониторами
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
@@ -233,7 +230,7 @@ binds {
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
-    // --- Управление Воркспейсами ---
+    // --- Управление воркспейсами ---
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up;  }
     Mod+U              { focus-workspace-down; }
@@ -258,7 +255,7 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
-    
+
     Mod+Ctrl+1 { move-column-to-workspace 1; }
     Mod+Ctrl+2 { move-column-to-workspace 2; }
     Mod+Ctrl+3 { move-column-to-workspace 3; }
@@ -269,63 +266,55 @@ binds {
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
-    // --- Управление Колонками (Слияние, размеры, режимы) ---
+    // --- Управление колонками (слияние, размеры, режимы) ---
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
     Mod+Comma        { consume-window-into-column; }
     Mod+Period       { expel-window-from-column; }
 
     Mod+R            { switch-preset-column-width; }
-    Mod+Shift+R      { switch-preset-column-width-back; }
+    Mod+Ctrl+R       { switch-preset-column-width-back; }
     Mod+Ctrl+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R       { reset-window-height; }
+    Mod+Shift+R      { reset-window-height; }
 
     Mod+F            { maximize-column; }
-    Mod+Shift+F      { fullscreen-window; }
+    Mod+Ctrl+F       { fullscreen-window; }
     Mod+M            { maximize-window-to-edges; }
-    Mod+Ctrl+F       { expand-column-to-available-width; }
+    Mod+Shift+F      { expand-column-to-available-width; }
     Mod+C            { center-column; }
-    Mod+Ctrl+C       { center-visible-columns; }
+    Mod+Shift+C      { center-visible-columns; }
 
     Mod+Minus        { set-column-width "-10%"; }
     Mod+Equal        { set-column-width "+10%"; }
-    Mod+Shift+Minus  { set-window-height "-10%"; }
-    Mod+Shift+Equal  { set-window-height "+10%"; }
+    Mod+Ctrl+Minus   { set-window-height "-10%"; }
+    Mod+Ctrl+Equal   { set-window-height "+10%"; }
 
     Mod+V            { toggle-window-floating; }
-    Mod+Shift+V      { switch-focus-between-floating-and-tiling; }
-    Mod+W            { toggle-column-tabbed-display; }
-    
+    Mod+Ctrl+V       { switch-focus-between-floating-and-tiling; }
+
+    // --- Приложения ---
+    Mod+W {
+        spawn "librewolf"
+    }
 
     // Yazi
     Mod+Y {
-    spawn "foot" "--config=/home/to1z/.config/foot/foot-yazi.ini" "yazi"
-    }
-    
-    // Neovim
-    Mod+N {
-    spawn "foot" "-e" "nvim"
-    }
-    
-    // Color Picker
-    Mod+q {
-    spawn-sh "hyprpicker -a"
+        spawn "foot" "--config=/home/to1z/.config/foot/foot-yazi.ini" "yazi"
     }
 
-    // --- Скролл Мыши и Тачпада ---
-    // [USER] Колесо теперь крутит окна (колонки) влево/вправо
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-column-right; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-column-left; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-right; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-left; }
+    // Color Picker
+    Mod+Ctrl+C {
+        spawn-sh "hyprpicker -a"
+    }
+
+    // --- Скролл мыши и тачпада ---
+    Mod+WheelScrollDown       { focus-column-right; }
+    Mod+WheelScrollUp         { focus-column-left; }
+    Mod+Ctrl+WheelScrollDown  { move-column-right; }
+    Mod+Ctrl+WheelScrollUp    { move-column-left; }
 
     Mod+WheelScrollRight      { focus-column-right; }
     Mod+WheelScrollLeft       { focus-column-left; }
     Mod+Ctrl+WheelScrollRight { move-column-right; }
     Mod+Ctrl+WheelScrollLeft  { move-column-left; }
-
-    Mod+Shift+WheelScrollDown      { focus-column-right; }
-    Mod+Shift+WheelScrollUp        { focus-column-left; }
-    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 }
