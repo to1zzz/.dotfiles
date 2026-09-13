@@ -13,8 +13,8 @@
         "memory",
         "cpu",
         "custom/temperature",
-        "custom/date",
         "clock",
+        "custom/time",
         "custom/power"
     ],
 
@@ -27,14 +27,25 @@
         "format": "{}",
         "max-length": 50
     },
+
+    // ----- Блок ДАТЫ -----
     "clock": {
-        "format": " {:%H:%M}"
-    },
-    "custom/date": {
-        "format": " {}",
+        "format": " {0:%d.%m}",               
+        "format-alt": " {0:%a, %d %B}",       
+        "locale": "en_US.UTF-8",
         "interval": 60,
-        "exec": "LC_TIME=en_US.UTF-8 date '+%a, %d %B'"
+        "tooltip": true,
+        "tooltip-format": "<big>{0:%Y %B}</big>\n<big><b>{0:%A, %d %B %Y}</b></big>\n<tt><small>{calendar}</small></tt>"
     },
+
+    // ----- Блок ВРЕМЕНИ -----
+    "custom/time": {
+        "exec": "date '+%H:%M'",
+        "interval": 1,
+        "format": " {}"
+    },
+
+    // ----- Остальные модули -----
     "cpu": {
         "format": " {usage}%",
         "interval": 2
