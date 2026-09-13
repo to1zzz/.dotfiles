@@ -20,38 +20,52 @@ window#waybar {
     border-radius: 0;
 }
 
-#memory, #cpu, #custom-temperature, #custom-date, #clock, #language, #tray, #custom-power {
+/* Общие стили для всех модулей */
+#memory,
+#cpu,
+#custom-temperature,
+#clock,          /* ← блок ДАТЫ */
+#custom-time,    /* ← блок ВРЕМЕНИ */
+#language,
+#tray,
+#custom-power {
     margin: 6px 2px;
     padding: 0 11px;
     border-radius: 6px;
     min-height: 29px;
 }
 
+/* RAM — жёлтый */
 #memory {
     background: linear-gradient(to bottom, #e0af4a, #c49632);
     color: #282828;
 }
 
+/* CPU — бежевый */
 #cpu {
     background: linear-gradient(to bottom, #d5c4a1, #b8a785);
     color: #282828;
 }
 
-#custom-date {
+/* ДАТА — зелёный */
+#clock {
     background: linear-gradient(to bottom, #97b87a, #7d9e62);
     color: #282828;
 }
 
-#clock {
+/* ВРЕМЯ — бежевый */
+#custom-time {
     background: linear-gradient(to bottom, #d5c4a1, #b8a785);
     color: #282828;
 }
 
+/* Температура — синий */
 #custom-temperature {
     background: linear-gradient(to bottom, #83a598, #6f8f8a);
     color: #282828;
 }
 
+/* Power — синий */
 #custom-power {
     background: linear-gradient(to bottom, #83a598, #6f8f8a);
     color: #282828;
@@ -59,6 +73,7 @@ window#waybar {
     margin-right: 4px;
 }
 
+/* Раскладка и трей — тёмные */
 #language {
     background: linear-gradient(to bottom, #4f4844, #3f3835);
     color: #ebdbb2;
@@ -72,6 +87,7 @@ window#waybar {
     color: #ebdbb2;
 }
 
+/* Workspaces */
 #workspaces {
     margin-left: 2px;
 }
@@ -91,5 +107,11 @@ window#waybar {
     background: linear-gradient(to bottom, #675e57, #514a44);
 }
 
-tooltip { background: #282828; border: 1px solid #504945; }
-tooltip label { color: #ebdbb2; }
+/* Tooltips */
+tooltip {
+    background: #282828;
+    border: 1px solid #504945;
+}
+tooltip label {
+    color: #ebdbb2;
+}
