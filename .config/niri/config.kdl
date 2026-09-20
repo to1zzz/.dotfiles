@@ -54,7 +54,7 @@ output "DP-1" {
 // ----------------------------------------------------------------------------
 
 layout {
-    gaps 15
+    gaps 12
     center-focused-column "never"
 
     preset-column-widths {
@@ -79,6 +79,7 @@ layout {
         urgent-color "#3c3836"
 
         active-gradient from="#83a598" to="#6f8f8a" angle=180
+        //active-gradient from="#689d6a" to="#4e7a52" angle=180
     }
 
     shadow {
@@ -102,7 +103,7 @@ hotkey-overlay {
 }
 
 // prefer-no-csd
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "/mnt/hdd_2tb/pictures/ from %Y-%m-%d %H-%M-%S.png"
 // screenshot-path null
 
 // ----------------------------------------------------------------------------
@@ -116,6 +117,8 @@ spawn-at-startup "pipewire-pulse"
 spawn-at-startup "sh" "-c" "dbus-update-activation-environment --all"
 spawn-at-startup "swaybg" "-i" "/home/to1z/wallpaper.png" "-m" "fill"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "Telegram"
+spawn-at-startup "Throne"
 
 environment {
     DISPLAY ":0"
@@ -157,9 +160,9 @@ binds {
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // --- Скриншоты ---
-    Mod+S { screenshot; }
-    Mod+Ctrl+S { screenshot-window; }
-    Print { screenshot-screen; }
+    Mod+S { screenshot-window; }
+    Print { screenshot; }
+    Mod+Print { screenshot-screen; }
 
     // --- Выход / Выключение ---
     Mod+Ctrl+E { quit; }
@@ -293,6 +296,10 @@ binds {
     Mod+Ctrl+V       { switch-focus-between-floating-and-tiling; }
 
     // --- Приложения ---
+    Mod+B {
+      spawn "~/.config/waybar/power-menu.sh"
+    }
+
     Mod+W {
         spawn "librewolf"
     }
