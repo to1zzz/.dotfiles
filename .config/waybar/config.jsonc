@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 39,
+    "height": 41,
 
     "modules-left": [
         "niri/workspaces",
@@ -28,7 +28,6 @@
         "max-length": 50
     },
 
-    // ----- Блок ДАТЫ -----
     "clock": {
         "format": " {0:%d.%m}",               
         "format-alt": " {0:%a, %d %B}",       
@@ -38,14 +37,12 @@
         "tooltip-format": "<big>{0:%Y %B}</big>\n<big><b>{0:%A, %d %B %Y}</b></big>\n<tt><small>{calendar}</small></tt>"
     },
 
-    // ----- Блок ВРЕМЕНИ -----
     "custom/time": {
         "exec": "date '+%H:%M'",
-        "interval": 1,
+        "interval": 10,
         "format": " {}"
     },
 
-    // ----- Остальные модули -----
     "cpu": {
         "format": " {usage}%",
         "interval": 2
