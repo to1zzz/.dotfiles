@@ -38,17 +38,15 @@ input {
 // ----------------------------------------------------------------------------
 //  2. OUTPUTS (Monitors Setup)
 // ----------------------------------------------------------------------------
-
-output "HDMI-A-1" {
-    mode "1920x1080@74.973"
-    position x=0 y=0
-}
-
 output "DP-1" {
-    mode "1920x1080@239.998"
-    position x=1920 y=0
-}
+    mode "3440x1440@144.000"
+    scale 1.0
+    transform "normal"
+    position x=0 y=0
 
+    // VRR включается флагом без значения
+    // variable-refresh-rate
+}
 // ----------------------------------------------------------------------------
 //  3. ENVIRONMENT & WINDOW RULES (Layout, Style, Animations)
 // ----------------------------------------------------------------------------
@@ -64,7 +62,7 @@ layout {
     }
 
     default-column-width {
-        proportion 0.5
+        proportion 0.33333
     }
 
     focus-ring {
@@ -312,6 +310,11 @@ binds {
     // Color Picker
     Mod+Ctrl+C {
         spawn-sh "hyprpicker -a"
+    }
+    
+    // Thunar
+    Mod+E {
+      spawn "Thunar"
     }
 
     // --- Скролл мыши и тачпада ---
