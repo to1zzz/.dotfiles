@@ -1,3 +1,4 @@
+
 // ============================================================================
 //  NIRI CONFIGURATION FILE (KDL Format: https://kdl.dev)
 // ============================================================================
@@ -43,16 +44,14 @@ output "DP-1" {
     scale 1.0
     transform "normal"
     position x=0 y=0
-
-    // VRR включается флагом без значения
-    // variable-refresh-rate
 }
+
 // ----------------------------------------------------------------------------
 //  3. ENVIRONMENT & WINDOW RULES (Layout, Style, Animations)
 // ----------------------------------------------------------------------------
 
 layout {
-    gaps 12
+    gaps 15
     center-focused-column "never"
 
     preset-column-widths {
@@ -75,9 +74,8 @@ layout {
 
         inactive-color "#504945"
         urgent-color "#3c3836"
-
-        active-gradient from="#83a598" to="#6f8f8a" angle=180
-        //active-gradient from="#689d6a" to="#4e7a52" angle=180
+        active-gradient from="#a2b95a" to="#869a44" angle=180
+        //active-gradient from="#83a598" to="#6f8f8a" angle=180
     }
 
     shadow {
@@ -92,7 +90,7 @@ layout {
 
 // Скругление углов
 window-rule {
-    geometry-corner-radius 10
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 
@@ -113,11 +111,12 @@ spawn-at-startup "pipewire"
 spawn-at-startup "wireplumber"
 spawn-at-startup "pipewire-pulse"
 spawn-at-startup "sh" "-c" "dbus-update-activation-environment --all"
-spawn-at-startup "swaybg" "-i" "/home/to1z/wallpaper.png" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "/home/to1z/Pictures/wallpaper.png" "-m" "fill"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "librewolf"
 spawn-at-startup "Telegram"
 spawn-at-startup "Throne"
-
+spawn-at-startup "devmon"
 environment {
     DISPLAY ":0"
 }
@@ -158,9 +157,9 @@ binds {
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // --- Скриншоты ---
-    Mod+S { screenshot-window; }
-    Print { screenshot; }
-    Mod+Print { screenshot-screen; }
+    Mod+Shift+S { screenshot-window; }
+    Mod+S { screenshot; }
+    Mod+Ctrl+S { screenshot-screen; }
 
     // --- Выход / Выключение ---
     Mod+Ctrl+E { quit; }
