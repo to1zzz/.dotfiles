@@ -28,6 +28,10 @@ function fish_prompt
 end
 
 alias y='foot --config=$HOME/.config/foot/foot-yazi.ini yazi'
-alias v='nvim'
-alias sv='sudo -E nvim'
-alias shx='sudo -E hx'
+abbr -a v nvim
+abbr -a sv sudo -E nvim
+abbr -a shx sudo -E hx
+
+zoxide init fish | source
+atuin init fish | source
+set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
