@@ -21,9 +21,9 @@ This setup is optimized and battle-tested on my primary workstation:
 The entire user interface is unified under the **Gruvbox** color palette. It's a retro-inspired, medium-contrast scheme designed for long coding sessions and late-night terminal work. Gruvbox prioritizes readability and visual harmony, featuring warm earth tones that are easy on the eyes. This theme is applied consistently across Niri borders, Waybar, terminals, and all supported applications.
 
 The core palette and philosophy were developed by [morhetz](https://github.com/morhetz/gruvbox) and has been adapted here into a full desktop environment.
-for yazi 
+> 'for yazi' 
 ```bash
-'ya pkg add bennyyip/gruvbox-dark'
+ya pkg add bennyyip/gruvbox-dark
 ```
 
 ## 📸 Screenshots
