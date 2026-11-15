@@ -303,7 +303,7 @@ binds {
 
     // Yazi
     Mod+Y {
-        spawn "foot" "--config=/home/to1z/.config/foot/foot-yazi.ini" "yazi"
+        spawn "foot" "yazi"
     }
 
     // Color Picker
