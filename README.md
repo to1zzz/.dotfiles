@@ -24,6 +24,7 @@ The core palette and philosophy were developed by [morhetz](https://github.com/m
 for yazi 
 ```bash
 'ya pkg add bennyyip/gruvbox-dark'
+```
 
 ## 📸 Screenshots
 
