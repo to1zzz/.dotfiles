@@ -45,8 +45,8 @@ Getting my exact desktop layout is straightforward.
     ```bash
    ln -sf ~/.dotfiles/.config ~/
 4. **for yazi**
-```bash
-ya pkg add bennyyip/gruvbox-dark
+    ```bash
+   ya pkg add bennyyip/gruvbox-dark
 ```
 
 That's it! Log out and select the Niri session from your display manager to start exploring.
