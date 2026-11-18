@@ -1,2 +1,15 @@
 [flavor]
 dark = "gruvbox-dark"
+
+[status]
+overall = { fg = "#ebdbb2", bg = "reset" }
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+[mode]
+normal_main = { fg = "#83a598", bg = "reset", bold = true }
+normal_alt  = { fg = "#83a598", bg = "reset" }
+select_main = { fg = "#fb4934", bg = "reset", bold = true }
+select_alt  = { fg = "#fb4934", bg = "reset" }
+unset_main  = { fg = "#fe8019", bg = "reset", bold = true }
+unset_alt   = { fg = "#fe8019", bg = "reset" }
